@@ -1,4 +1,5 @@
 import '@styles/styles.scss';
+
 import { ConfigProvider } from 'antd';
 import lodash from 'lodash';
 import React, { memo, Suspense, useEffect, useMemo } from 'react';
@@ -10,6 +11,7 @@ import locale from '@locale/index';
 import { TokenSelector } from '@modules/authentication/profileStore';
 import { LanguageSelector } from '@modules/setting/settingStore';
 import PrivatePage from '@routers/component/PrivatePage';
+import '@shared/assets/css/bootstrap.min.css';
 import PublicPage from './routers/component/PublicPage';
 
 const MainView = memo(({ statusLogin }: { statusLogin: boolean }) => {

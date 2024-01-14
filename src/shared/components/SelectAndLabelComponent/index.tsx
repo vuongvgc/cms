@@ -22,7 +22,9 @@ export interface ISelectAndLabel {
   translate?: boolean;
 }
 
-const SelectAndLabelComponent: React.FC<ISelectAndLabel> = (props: ISelectAndLabel) => {
+const SelectAndLabelComponent: React.FC<ISelectAndLabel> = (
+  props: ISelectAndLabel
+) => {
   const { keyLabel, dataString, translate } = props;
   const intl = useIntl();
   const [value, setValue] = useState(props.value);
@@ -77,7 +79,7 @@ const SelectAndLabelComponent: React.FC<ISelectAndLabel> = (props: ISelectAndLab
 
   return (
     <div className={`select-label-component ${className}`}>
-      <div className="label-select">
+      <div className='label-select'>
         {renderUILabel}
         <Select
           className={'select-custom ' + (props.classNameSelect || '')}
@@ -86,7 +88,7 @@ const SelectAndLabelComponent: React.FC<ISelectAndLabel> = (props: ISelectAndLab
           onChange={onChange}
           disabled={props.disabled}
           placeholder={props?.placeholder}
-          dropdownClassName={props?.dropdownClassName}
+          popupClassName={props?.dropdownClassName}
         >
           {renderUIOption}
         </Select>
