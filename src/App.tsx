@@ -1,34 +1,55 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+// import '@styles/styles.scss';
 
-function App() {
-  const [count, setCount] = useState(0);
+import { ConfigProvider } from 'antd';
+import lodash from 'lodash';
+import React, { memo, Suspense, useEffect, useMemo } from 'react';
+import { IntlProvider } from 'react-intl';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
+import locale from '@locale/index';
+import { TokenSelector } from '@modules/authentication/profileStore';
+import { LanguageSelector } from '@modules/setting/settingStore';
+import PrivatePage from '@routers/component/PrivatePage';
+import PublicPage from './routers/component/PublicPage';
+
+const MainView = memo(({ statusLogin }: { statusLogin: boolean }) => {
   return (
     <>
-      <div>
-        <a href='https://vitejs.dev' target='_blank'>
-          <img src={viteLogo} className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://react.dev' target='_blank'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
+      {statusLogin ? (
+        <Suspense fallback={<></>}>
+          <PrivatePage />
+        </Suspense>
+      ) : (
+        <Suspense fallback={<></>}>
+          <PublicPage />
+        </Suspense>
+      )}
     </>
   );
-}
+});
+
+// For Test
+const App: React.FC = () => {
+  const { token } = useSelector(TokenSelector);
+  const { language } = useSelector(LanguageSelector);
+  const navigate = useNavigate();
+  const memoLangData = useMemo(() => {
+    return locale[language];
+  }, [language]);
+  useEffect(() => {
+    if (!token) {
+      navigate('/login');
+    }
+  }, [token]);
+
+  return (
+    <IntlProvider locale={language} messages={memoLangData}>
+      <ConfigProvider locale={memoLangData}>
+        <MainView statusLogin={!lodash.isEmpty(token)} />
+      </ConfigProvider>
+    </IntlProvider>
+  );
+};
 
 export default App;

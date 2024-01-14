@@ -1,2 +1,4 @@
-export const logo = require('./logo.png');
-export const imgAvatar = require('./avatar.jpg');
+import Logo from './logo.png';
+import ImageAvatar from './avatar.jpg';
+export const logo = Logo;
+export const imgAvatar = ImageAvatar;

@@ -20,7 +20,7 @@ const persistConfig: PersistConfig<RootState> = {
 
 const persistedReducer = persistReducer(persistConfig, appReducer);
 const middleware = [];
-if (process.env.NODE_ENV === 'development') {
+if (import.meta.env.NODE_ENV === 'development') {
   middleware.push(logger);
 }
 const store = createStore(persistedReducer, applyMiddleware(...middleware));
