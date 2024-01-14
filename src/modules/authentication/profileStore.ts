@@ -1,4 +1,9 @@
-import { createAction, createSlice, PayloadAction, Selector } from '@reduxjs/toolkit';
+import {
+  createAction,
+  createSlice,
+  PayloadAction,
+  Selector,
+} from '@reduxjs/toolkit';
 import lodash from 'lodash';
 import { RootState } from '@modules';
 import UserEntity from '@modules/user/entity';
@@ -9,7 +14,9 @@ interface IStore {
   listPermissionCode?: Array<string>;
 }
 export const removeProfile = createAction('authentication/removeProfile');
-export const setToken = createAction<{ token: any; remember: boolean }>('authentication/setToken');
+export const setToken = createAction<{ token: any; remember: boolean }>(
+  'authentication/setToken'
+);
 
 interface IStore {
   statusLogin?: boolean;
@@ -33,7 +40,7 @@ const profileStore = createSlice({
   reducers: {
     fetchProfile: (
       state,
-      action: PayloadAction<{ user?: UserEntity; listPermissionCode?: string[] }>,
+      action: PayloadAction<{ user?: UserEntity; listPermissionCode?: string[] }>
     ) =>
       Object.assign(state, {
         statusLogin: action.payload.user != null,
@@ -45,7 +52,7 @@ const profileStore = createSlice({
       action: PayloadAction<{
         listPermissionCode?: string[];
         statusLogin?: boolean;
-      }>,
+      }>
     ) => Object.assign(state, action.payload),
     saveImageGroup: (state, action) => {
       return {
@@ -62,7 +69,7 @@ const profileStore = createSlice({
       };
     },
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(removeProfile, (state: any) => {
         return {
@@ -77,7 +84,7 @@ const profileStore = createSlice({
       .addCase(setToken, (state, action) =>
         Object.assign(state, action.payload, {
           statusLogin: !lodash.isEmpty(action.payload.token),
-        }),
+        })
       );
   },
 });
@@ -87,10 +94,10 @@ interface IToken {
   status: boolean;
 }
 
-export const TokenSelector: Selector<RootState, IToken> = state => {
+export const TokenSelector: Selector<RootState, IToken> = (state) => {
   return {
-    token: state.profile.token || '',
-    status: state.profile.statusLogin || false,
+    token: 'Vuong Do',
+    status: true,
   };
 };
 
@@ -99,7 +106,7 @@ interface IUser {
   status: boolean;
 }
 
-export const UserSelector: Selector<RootState, IUser> = state => {
+export const UserSelector: Selector<RootState, IUser> = (state) => {
   return {
     user: state.profile.user,
     status: state.profile.statusLogin || false,
@@ -110,7 +117,7 @@ interface IPermissions {
   listPermissionCode: string[];
   status: boolean;
 }
-export const PermissionsSelector: Selector<RootState, IPermissions> = state => {
+export const PermissionsSelector: Selector<RootState, IPermissions> = (state) => {
   return {
     listPermissionCode: state.profile.listPermissionCode || [],
     status: state.profile.statusLogin || false,

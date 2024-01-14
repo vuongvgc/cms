@@ -1,4 +1,5 @@
 import { IRouter } from '@routers/interface';
+import Profile from './index';
 
 export const routerViewProfile: IRouter = {
   path: '/profile',
@@ -6,4 +7,5 @@ export const routerViewProfile: IRouter = {
   loader: import('./index'),
   exact: true,
   masterLayout: false,
+  Component: <Profile />,
 };
