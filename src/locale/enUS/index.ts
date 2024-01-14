@@ -6,6 +6,7 @@ import auth from './auth';
 import common from './common';
 import pageError from './pageError';
 import server from './server';
+import order from './order';
 
 export default {
   ...enUS,
@@ -14,4 +15,5 @@ export default {
   ...auth,
   ...pageError,
   ...roles,
+  ...order,
 };
