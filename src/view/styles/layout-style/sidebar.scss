@@ -1,5 +1,5 @@
-@use "variable";
-@use "mixin";
+@use "../variable";
+@use "../mixin";
 @import "./header.scss";
 
 $size-img: 10rem;

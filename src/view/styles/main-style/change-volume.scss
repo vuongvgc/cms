@@ -1,5 +1,5 @@
-@use "variable";
-@use "mixin";
+@use "../variable";
+@use "../mixin";
 
 .change-volume {
     display: flex;

@@ -1,5 +1,4 @@
-// import '@styles/styles.scss';
-
+import '@styles/styles.scss';
 import { ConfigProvider } from 'antd';
 import lodash from 'lodash';
 import React, { memo, Suspense, useEffect, useMemo } from 'react';

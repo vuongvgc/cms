@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
+import sassDts from 'vite-plugin-sass-dts';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
@@ -24,5 +26,5 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/shared/components'),
     },
   },
-  plugins: [react()],
+  plugins: [react(), sassDts()],
 });
