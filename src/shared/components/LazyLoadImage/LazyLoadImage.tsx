@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { Skeleton } from 'antd';
+import { useState } from 'react';
 import './LazyLoadImage.scss';
 
 interface IProps {
@@ -11,7 +11,7 @@ const LazyLoadImage = (props: IProps) => {
   const [rendered, setRendered] = useState(true);
 
   return (
-    <div className="lazyLoad-img">
+    <div className='lazyLoad-img'>
       {rendered && (
         <Skeleton.Avatar
           className={'skeleton'}

@@ -25,9 +25,10 @@ interface IPermission {
   listPermissions: PermissionsEntity[];
 }
 
-export const PermissionSelector: Selector<RootState, IPermission> = state => {
+export const PermissionSelector: Selector<RootState, IPermission> = () => {
   return {
-    listPermissions: state.permissionStore.listPermissions || [],
+    // listPermissions: state.permissionStore.listPermissions || [],
+    listPermissions: [],
   };
 };
 

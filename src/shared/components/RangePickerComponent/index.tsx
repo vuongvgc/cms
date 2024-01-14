@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { DatePicker } from 'antd';
 import * as Unicons from '@iconscout/react-unicons';
+import { DatePicker } from 'antd';
+import React, { useEffect, useState } from 'react';
 export interface IRangerPicker {
   value?: any;
-  onChange?: (value) => void;
+  onChange?: (value: any) => void;
   defaultValue?: any;
   textLabel?: string;
   className?: string;
@@ -16,7 +16,7 @@ const RangePickerComponent = (props: IRangerPicker) => {
     setValue(props.value);
   }, [props.value]);
 
-  const onChange = pValue => {
+  const onChange = (pValue: any) => {
     setValue(pValue);
     if (props.onChange) {
       props.onChange(pValue);
@@ -31,9 +31,9 @@ const RangePickerComponent = (props: IRangerPicker) => {
       onChange={onChange}
       // onChange={(value) => props?.onChange(value)}
       value={value}
-      format="DD/MM/YYYY"
+      format='DD/MM/YYYY'
       showTime
-      suffixIcon={<Unicons.UilCalendarAlt size="27" className="icon-feather" />}
+      suffixIcon={<Unicons.UilCalendarAlt size='27' className='icon-feather' />}
     />
   );
 };

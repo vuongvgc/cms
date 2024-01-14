@@ -1,6 +1,5 @@
 import { useAltaIntl } from '@shared/hook/useTranslate';
 import { Tooltip } from 'antd';
-import React from 'react';
 import * as Icon from 'react-feather';
 interface IProps {
   onClick?: () => void;

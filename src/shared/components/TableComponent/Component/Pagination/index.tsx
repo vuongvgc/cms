@@ -14,7 +14,7 @@ interface IProps {
 const Pagination = (props: IProps) => {
   const { pagination, onChange } = props;
   const debounce = React.useMemo(() => {
-    return lodash.debounce(value => {
+    return lodash.debounce((value) => {
       onChange({
         ...pagination,
         pageSize: value,
@@ -26,20 +26,25 @@ const Pagination = (props: IProps) => {
     return <></>;
   }
 
-  const fnOnChange = (value: number) => {
-    if (value > 0) {
+  const fnOnChange = (value: number | null) => {
+    if (value && value > 0) {
       debounce.cancel();
       debounce(value);
     }
   };
   return (
-    <div className="table-function">
-      <div className="pagesize">
-        <span className="pagesize--show">
+    <div className='table-function'>
+      <div className='pagesize'>
+        <span className='pagesize--show'>
           <FormattedMessage id={props.display || 'common.display'} />
         </span>
-        <InputNumber onChange={fnOnChange} max={250} min={1} defaultValue={pagination?.pageSize} />
-        <span className="pagesize--entries">
+        <InputNumber
+          onChange={fnOnChange}
+          max={250}
+          min={1}
+          defaultValue={pagination?.pageSize}
+        />
+        <span className='pagesize--entries'>
           <FormattedMessage id={props.entries || 'common.entries'} />
         </span>
       </div>

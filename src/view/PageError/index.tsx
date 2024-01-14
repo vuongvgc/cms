@@ -1,11 +1,10 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { logo } from '@assets/images';
 import { Button } from 'antd';
 import { useIntl } from 'react-intl';
-import { logo } from '@assets/images';
+import { useNavigate } from 'react-router-dom';
 import './styles.scss';
 const PageError = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const intl = useIntl();
 
   return (
@@ -22,7 +21,7 @@ const PageError = () => {
         </div>
         <p className='note-404'>{intl.formatMessage({ id: 'common.404note' })}</p>
         <Button className='btn-err'>
-          <a onClick={() => history.push('/')}>
+          <a onClick={() => navigate('/')}>
             {intl.formatMessage({ id: 'common.back' })}
           </a>
         </Button>

@@ -1,14 +1,13 @@
 import { Tooltip } from 'antd';
-import React from 'react';
-import { useIntl } from 'react-intl';
 import { Info } from 'react-feather';
+import { useIntl } from 'react-intl';
 interface IProps {
   onClick?: () => void;
   disable?: boolean;
 }
 const InformationIconComponent = (props: IProps) => {
   const intl = useIntl();
-  const onClick = e => {
+  const onClick = (e: any) => {
     if (props?.onClick) {
       props?.onClick();
     }

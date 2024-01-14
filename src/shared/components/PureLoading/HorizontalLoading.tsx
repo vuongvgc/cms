@@ -1,4 +1,3 @@
-import React from 'react';
 import './HorizontalLoading.scss';
 interface Props {
   color?: any;
@@ -6,7 +5,7 @@ interface Props {
 
 const HorizontalLoading = (props: Props) => {
   return (
-    <div className="lds-ellipsis lds-horizontal ">
+    <div className='lds-ellipsis lds-horizontal '>
       <div style={{ color: props.color || undefined }}></div>
       <div style={{ color: props.color || undefined }}></div>
       <div style={{ color: props.color || undefined }}></div>

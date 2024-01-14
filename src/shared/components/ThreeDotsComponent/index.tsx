@@ -14,24 +14,33 @@ interface Iprops {
   dataAction?: any;
 }
 
-const ThreeDotsComponent = ({ arrayAction, handleAction, dataAction, rotate }: Iprops) => {
+const ThreeDotsComponent = ({
+  arrayAction,
+  handleAction,
+  dataAction,
+  rotate,
+}: Iprops) => {
   const changeAction = useCallback(
-    item => {
+    (item: any) => {
       handleAction!(item, dataAction);
     },
-    [dataAction, handleAction],
+    [dataAction, handleAction]
   );
 
   const menu = (
-    <Menu className="dropdown-menu">
-      {arrayAction?.map(item => {
+    <Menu className='dropdown-menu'>
+      {arrayAction?.map((item) => {
         if (!item || item.isAllow === false) {
           return;
         }
         return (
           <Menu.Item onClick={() => changeAction(item)}>
             <a>
-              <i className={item.icon} aria-hidden="true" style={{ color: item.color }} />
+              <i
+                className={item.icon}
+                aria-hidden='true'
+                style={{ color: item.color }}
+              />
               <span>{item.name}</span>
             </a>
           </Menu.Item>
@@ -40,13 +49,18 @@ const ThreeDotsComponent = ({ arrayAction, handleAction, dataAction, rotate }: I
     </Menu>
   );
   return (
-    <div className="threeDots">
-      <Dropdown overlay={menu} placement="bottomRight" trigger={['click']} className="three-dots">
+    <div className='threeDots'>
+      <Dropdown
+        overlay={menu}
+        placement='bottomRight'
+        trigger={['click']}
+        className='three-dots'
+      >
         <Button>
           <i
             style={{ transform: `rotate(${rotate}deg)` }}
-            className="fa fa-ellipsis-h"
-            aria-hidden="true"
+            className='fa fa-ellipsis-h'
+            aria-hidden='true'
           />
         </Button>
       </Dropdown>

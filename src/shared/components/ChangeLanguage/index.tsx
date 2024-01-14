@@ -1,17 +1,19 @@
+import { LANGUAGE } from '@config/index';
 import store from '@core/store/redux';
+import { RootState } from '@modules';
 import settingStore from '@modules/setting/settingStore';
 import { Selector } from '@reduxjs/toolkit';
-import React, { memo } from 'react';
-import { useSelector } from 'react-redux';
-import { LANGUAGE } from '@config/index';
 import { Select } from 'antd';
-import { RootState } from '@modules';
+import { memo } from 'react';
+import { useSelector } from 'react-redux';
 
 interface IChangeLanguage {
   language: string;
 }
 
-const ChangeLanguageSelector: Selector<RootState, IChangeLanguage> = (state: RootState) => ({
+const ChangeLanguageSelector: Selector<RootState, IChangeLanguage> = (
+  state: RootState
+) => ({
   language: state.settingStore.language,
 });
 

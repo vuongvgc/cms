@@ -2,7 +2,7 @@ import './style.scss';
 
 import { Space } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
-import React, { Key, useEffect, useState } from 'react';
+import { Key, useEffect, useState } from 'react';
 
 import ISelect from '@core/select';
 import RightMenu, { IArrayAction } from '@layout/RightMenu';
@@ -51,7 +51,9 @@ const Homepage = () => {
     },
     {
       dataIndex: 'group',
-      render: () => <CircleLabel text={formatMessage('common.statusActive')} colorCode="blue" />,
+      render: () => (
+        <CircleLabel text={formatMessage('common.statusActive')} colorCode='blue' />
+      ),
     },
     {
       dataIndex: 'action',
@@ -129,35 +131,35 @@ const Homepage = () => {
     }
   };
   return (
-    <div className="homepage">
+    <div className='homepage'>
       <MainTitleComponent breadcrumbs={routerHomepage} />
-      <div className="main-card">
-        <div className="d-flex flex-row justify-content-md-between mb-3 align-items-end">
-          <div className="d-flex flex-row ">
-            {arraySelectFilter.map(item => (
+      <div className='main-card'>
+        <div className='d-flex flex-row justify-content-md-between mb-3 align-items-end'>
+          <div className='d-flex flex-row '>
+            {arraySelectFilter.map((item) => (
               <SelectAndLabelComponent
                 onChange={onChangeSelectStatus(item.name)}
                 key={item.name}
-                className="margin-select"
+                className='margin-select'
                 dataString={item.dataString}
                 textLabel={item.textLabel}
               />
             ))}
           </div>
-          <div className="d-flex flex-column ">
-            <div className="label-select">{formatMessage('common.keyword')}</div>
+          <div className='d-flex flex-column '>
+            <div className='label-select'>{formatMessage('common.keyword')}</div>
             <SearchComponent
               onSearch={handleSearch}
               placeholder={'common.keyword'}
-              classNames="mb-0 search-table"
+              classNames='mb-0 search-table'
             />
           </div>
         </div>
         <TableComponent
           // apiServices={}
           defaultOption={filter}
-          translateFirstKey="homepage"
-          rowKey={res => res[idChooses]}
+          translateFirstKey='homepage'
+          rowKey={(res) => res[idChooses]}
           register={table}
           columns={columns}
           onRowSelect={setSelectedRowKeys}
@@ -166,7 +168,11 @@ const Homepage = () => {
         />
       </div>
       <RightMenu arrayAction={arrayAction} />
-      <ModalComponents modal={modal} handleRefresh={handleRefresh} setModal={setModal} />
+      <ModalComponents
+        modal={modal}
+        handleRefresh={handleRefresh}
+        setModal={setModal}
+      />
     </div>
   );
 };

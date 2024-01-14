@@ -1,7 +1,7 @@
 import { useAltaIntl } from '@shared/hook/useTranslate';
 import { Button } from 'antd';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface IButtonForm {
   nameButtonSubmit: string;
@@ -23,12 +23,12 @@ const ButtonForm: React.FC<IButtonForm> = ({
   isDisabled = false,
 }) => {
   const { formatMessage } = useAltaIntl();
-  const history = useHistory();
+  const navigate = useNavigate();
   const callOnCancelForm = React.useMemo(() => {
     if (onCancelForm) {
       return onCancelForm;
     }
-    return () => history.goBack();
+    return () => navigate(-1);
   }, [onCancelForm, history]);
 
   const callOnOkForm = React.useMemo(() => {

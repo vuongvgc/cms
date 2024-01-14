@@ -8,7 +8,7 @@ interface IProps {
 }
 const PlayIconComponent = (props: IProps) => {
   const { formatMessage } = useAltaIntl();
-  const onClick = e => {
+  const onClick = (e: any) => {
     if (props?.onClick) {
       props.onClick();
     }

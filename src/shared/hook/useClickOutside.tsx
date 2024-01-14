@@ -1,14 +1,14 @@
 import { useEffect, useCallback } from 'react';
 
-const useClickOutside = (listRef: Array<any>, onClickOutside) => {
+const useClickOutside = (listRef: Array<any>, onClickOutside: any) => {
   const clickOutside = useCallback(
-    event => {
-      const idOutSide = listRef.every(ref => !ref.current.contains(event.target));
+    (event: any) => {
+      const idOutSide = listRef.every((ref) => !ref.current.contains(event.target));
       if (idOutSide) {
         onClickOutside(event);
       }
     },
-    [listRef, onClickOutside],
+    [listRef, onClickOutside]
   );
   useEffect(() => {
     document.addEventListener('mousedown', clickOutside);

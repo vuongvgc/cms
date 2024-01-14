@@ -1,7 +1,6 @@
 import { Button, Form, Input, Space } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
 import Modal from 'antd/lib/modal/Modal';
-import React from 'react';
 
 import { useAltaIntl } from '@hook/useTranslate';
 import authenticationPresenter from '@modules/authentication/presenter';
@@ -46,7 +45,7 @@ const ModalChangePassWord = (props: IChangePassWord) => {
     <Modal
       footer={false}
       title={formatMessage('accounts.change.password.title')}
-      className="main-modal"
+      className='main-modal'
       visible={isModalVisible}
       destroyOnClose={true}
       onOk={handleOk}
@@ -54,16 +53,16 @@ const ModalChangePassWord = (props: IChangePassWord) => {
       closable={false}
     >
       <Form
-        className="main-form"
-        layout="vertical"
-        name="formChangePassword"
+        className='main-form'
+        layout='vertical'
+        name='formChangePassword'
         form={form}
         onFinish={onFinish}
         requiredMark={false}
       >
         <Form.Item
           label={formatMessage('accounts.newPassword')}
-          name="password"
+          name='password'
           rules={[
             {
               required: true,
@@ -78,7 +77,7 @@ const ModalChangePassWord = (props: IChangePassWord) => {
 
         <Form.Item
           label={formatMessage('accounts.confirm.newPassword')}
-          name="confirmPassword"
+          name='confirmPassword'
           dependencies={['password']}
           rules={[
             {
@@ -89,23 +88,31 @@ const ModalChangePassWord = (props: IChangePassWord) => {
                 if (!value || getFieldValue('password') === value) {
                   return Promise.resolve();
                 }
-                return Promise.reject(new Error(formatMessage('password.not.match')));
+                return Promise.reject(
+                  new Error(formatMessage('password.not.match'))
+                );
               },
             }),
           ]}
         >
-          <Input.Password placeholder={formatMessage('accounts.confirm.newPassword')} />
+          <Input.Password
+            placeholder={formatMessage('accounts.confirm.newPassword')}
+          />
         </Form.Item>
-        <Form.Item className="my-5">
-          <Space className="w-100" style={{ justifyContent: 'space-evenly' }}>
+        <Form.Item className='my-5'>
+          <Space className='w-100' style={{ justifyContent: 'space-evenly' }}>
             <Button
-              className="cancel-button button-modal"
-              htmlType="reset"
+              className='cancel-button button-modal'
+              htmlType='reset'
               onClick={() => onCancel()}
             >
               {formatMessage('common.cancel')}
             </Button>
-            <Button type="primary" className="normal-button button-modal" htmlType="submit">
+            <Button
+              type='primary'
+              className='normal-button button-modal'
+              htmlType='submit'
+            >
               {formatMessage('common.save')}
             </Button>
           </Space>

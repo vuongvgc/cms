@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
 import authenticationPresenter from '@modules/authentication/presenter';
 import { useSingleAsync } from '@shared/hook/useAsync';
 import { useAltaIntl } from '@shared/hook/useTranslate';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import NavLinkBottom from '../components/NavLinkBottom';
+import '../styles.scss';
 import TokenErrorStatus from './components/TokenErrorStatus';
 import UpdatePasswordForm from './components/UpdatePasswordForm';
-import '../styles.scss';
 
 const ResetPassword = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { formatMessage } = useAltaIntl();
   const [isRecoveryToken, setIsRecoveryToken] = useState<boolean>(true);
   const { CheckRecoveryToken } = authenticationPresenter;
@@ -35,7 +35,7 @@ const ResetPassword = () => {
       )}
       <NavLinkBottom
         navLink={formatMessage('link.return.login')}
-        onClick={() => history.push('/login')}
+        onClick={() => navigate('/login')}
       />
     </>
   );

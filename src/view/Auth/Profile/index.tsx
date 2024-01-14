@@ -3,7 +3,7 @@ import './style.scss';
 import { Button, Col, Form, Input, Row } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import store from '@core/store/redux';
 import { useSingleAsync } from '@hook/useAsync';
@@ -21,7 +21,7 @@ import ModalChangePassWord from './components/ModalChangePassWord';
 import { routerViewProfile } from './router';
 
 const UserProfile = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [form] = Form.useForm();
   const { formatMessage } = useAltaIntl();
   const [isVisible, setIsVisible] = useState(false);
@@ -60,7 +60,7 @@ const UserProfile = () => {
           content: formatMessage('common.logout.content'),
           handleOk: () => {
             // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-            store.dispatch(removeProfile()), history.push('/login');
+            store.dispatch(removeProfile()), navigate('/login');
           },
         });
       },

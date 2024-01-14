@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface IProps {
   text: any;
   colorCode?: 'blue' | 'red' | 'grey' | 'green';

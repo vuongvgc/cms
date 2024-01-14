@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { Button, Form, Input } from 'antd';
-import { useAltaIntl } from '@shared/hook/useTranslate';
 import { useSingleAsync } from '@hook/useAsync';
 import authenticationPresenter from '@modules/authentication/presenter';
+import { useAltaIntl } from '@shared/hook/useTranslate';
+import { Button, Form, Input } from 'antd';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import NavLinkBottom from '../components/NavLinkBottom';
 import RenderError from '../components/RenderError';
 
 const ForgotPassword = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { formatMessage } = useAltaIntl();
   const { forgotPass } = authenticationPresenter;
   const forgotPasswordCall = useSingleAsync(forgotPass);
@@ -76,7 +76,7 @@ const ForgotPassword = () => {
       </div>
       <NavLinkBottom
         navLink={formatMessage('link.return.login')}
-        onClick={() => history.push('/login')}
+        onClick={() => navigate('/login')}
       />
     </>
   );

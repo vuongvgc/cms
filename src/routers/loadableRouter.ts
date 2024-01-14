@@ -4,7 +4,7 @@ import Loadable from 'react-loadable';
 import { IRouter } from './interface';
 
 type ILoadable = {
-  loading: ReactNode;
+  loading: ReactNode | any;
   routers: Array<IRouter>;
 };
 
@@ -44,7 +44,7 @@ const flattenIRouter = (item: IRouter, loading: any): any => {
         routes: undefined,
       },
       // eslint-disable-next-line @typescript-eslint/comma-dangle
-    ],
+    ]
   );
 };
 class LoadableRouter {

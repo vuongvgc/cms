@@ -1,8 +1,8 @@
 import '../styles.scss';
 
 import { Button, Checkbox, Form, Input } from 'antd';
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { useSingleAsync } from '@hook/useAsync';
 import { useAltaIntl } from '@hook/useTranslate';
@@ -11,7 +11,7 @@ import authenticationPresenter from '@modules/authentication/presenter';
 import RenderError from '../components/RenderError';
 
 const Login = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { formatMessage } = useAltaIntl();
   const { login } = authenticationPresenter;
   const loginByAccount = useSingleAsync(login);
@@ -27,7 +27,7 @@ const Login = () => {
       ?.then(() => {
         setErrorStatus('');
         setTimeout(() => {
-          history.push('/');
+          navigate('/');
         }, 300);
       })
       .catch(() => {

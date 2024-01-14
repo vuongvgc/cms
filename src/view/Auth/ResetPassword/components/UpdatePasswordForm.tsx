@@ -1,22 +1,22 @@
-import authenticationPresenter from '@modules/authentication/presenter';
 import { useSingleAsync } from '@hook/useAsync';
 import { useAltaIntl } from '@hook/useTranslate';
+import authenticationPresenter from '@modules/authentication/presenter';
 import RenderError from '@view/Auth/components/RenderError';
 import { IUpdatePasswordForm } from '@view/Auth/interface';
-import { Input, Button, Form } from 'antd';
+import { Button, Form, Input } from 'antd';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const UpdatePasswordForm: React.FC<IUpdatePasswordForm> = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { formatMessage } = useAltaIntl();
   const { resetPass } = authenticationPresenter;
   const resetPasswordCall = useSingleAsync(resetPass);
 
   const [errorStatus, setErrorStatus] = useState('');
-  const onSubmitResetPassword = (values) => {
+  const onSubmitResetPassword = (values: any) => {
     resetPasswordCall?.execute(values, props.recoveryToken).then(() => {
-      history.push('/login');
+      navigate('/login');
     });
   };
 

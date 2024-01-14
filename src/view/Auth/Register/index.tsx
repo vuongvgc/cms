@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { Form, Input, Button } from 'antd';
 import { useSingleAsync } from '@hook/useAsync';
 import authenticationPresenter from '@modules/authentication/presenter';
 import { useAltaIntl } from '@shared/hook/useTranslate';
+import { Button, Form, Input } from 'antd';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import RenderError from '../components/RenderError';
 import '../styles.scss';
 
 const Register = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { register } = authenticationPresenter;
   const registerAccount = useSingleAsync(register);
   const [errorStatus, setErrorStatus] = useState('');
@@ -22,7 +22,7 @@ const Register = () => {
       .then(() => {
         setErrorStatus('');
         setTimeout(() => {
-          history.push('/');
+          navigate('/');
         }, 300);
       })
       .catch(() => {

@@ -18,7 +18,9 @@ const renderRoute = (
   exact: boolean
 ) => {
   if (hasMaster === false) {
-    return <Route key={path} path={path} exact={exact} component={component} />;
+    return (
+      <Route key={path} path={path} caseSensitive={exact} element={component} />
+    );
   }
   const DynamicComponent: React.FC<any> = component;
   if (MasterLayout) {
@@ -26,17 +28,22 @@ const renderRoute = (
       <Route
         key={path}
         path={path}
-        exact={exact}
-        component={() => (
+        caseSensitive={exact}
+        element={
           <MasterLayout>
             <DynamicComponent />
           </MasterLayout>
-        )}
+        }
       />
     );
   } else {
     return (
-      <Route key={path} path={path} exact={exact} component={DynamicComponent} />
+      <Route
+        key={path}
+        path={path}
+        caseSensitive={exact}
+        element={<DynamicComponent />}
+      />
     );
   }
 };

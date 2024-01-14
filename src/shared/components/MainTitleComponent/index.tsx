@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
+import { IRouter } from '@routers/interface';
+import { memo } from 'react';
 import BreadcrumbComponent from './BreadcumbComponent';
 import TitleComponent from './TitleComponent/index';
-import { IRouter } from '@routers/interface';
 
 export interface IBreadcrumbs {
   name: string;
@@ -32,9 +32,12 @@ const MainTitleComponent = ({
     }
   }
   return (
-    <div className="main-title-breadcrumb__box">
+    <div className='main-title-breadcrumb__box'>
       {breadcrumbs ? (
-        <BreadcrumbComponent breadcrumbs={breadcrumbs} className={classBreadcrumbs} />
+        <BreadcrumbComponent
+          breadcrumbs={breadcrumbs}
+          className={classBreadcrumbs}
+        />
       ) : (
         ''
       )}

@@ -9,7 +9,7 @@ interface Props {
   noShowTooltip?: boolean;
   tooltip?: string;
 }
-const RenderText = ({ content, className, style }) => {
+const RenderText = ({ content, className, style }: any) => {
   return (
     <p className={`content ${className ? className : ''}`} style={style}>
       {content ? content : '-'}
@@ -19,11 +19,21 @@ const RenderText = ({ content, className, style }) => {
 
 const TextComponent = (props: Props) => {
   if (props.noShowTooltip) {
-    return <RenderText content={props.text} style={props.style} className={props.className} />;
+    return (
+      <RenderText
+        content={props.text}
+        style={props.style}
+        className={props.className}
+      />
+    );
   }
   return (
-    <Tooltip title={props.text} placement="bottomLeft">
-      <RenderText content={props.text} style={props.style} className={props.className} />
+    <Tooltip title={props.text} placement='bottomLeft'>
+      <RenderText
+        content={props.text}
+        style={props.style}
+        className={props.className}
+      />
     </Tooltip>
   );
 };

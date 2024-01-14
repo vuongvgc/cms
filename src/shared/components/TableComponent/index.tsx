@@ -12,7 +12,12 @@ import { useAltaIntl } from '@shared/hook/useTranslate';
 
 import SearchComponent from '../SearchComponent/SearchComponent';
 import Pagination from './Component/Pagination';
-import { IBEColumnsType, IBEPaginationTable, InitOption, InitPagination } from './interface';
+import {
+  IBEColumnsType,
+  IBEPaginationTable,
+  InitOption,
+  InitPagination,
+} from './interface';
 
 interface IState {
   pagination: PaginationEntity;
@@ -26,7 +31,11 @@ const align = {
   right: 'to-right',
 };
 
-const getDataWithCurrentState = (state: any, setState: (state: any) => any, repository: any) => {
+const getDataWithCurrentState = (
+  state: any,
+  setState: (state: any) => any,
+  repository: any
+) => {
   const { option, pagination } = state;
   setState((prev: any) => ({ ...prev, option }));
   if (repository) {
@@ -56,7 +65,7 @@ function toColumns<T = any>(
   pageSize: number,
   formatMessage: any,
   // eslint-disable-next-line @typescript-eslint/comma-dangle
-  listPermissionCode?: string[],
+  listPermissionCode?: string[]
 ) {
   const col = columns?.filter((item: any) => {
     const permissionCode = item?.permissionCode || null;
@@ -93,7 +102,7 @@ function toColumns<T = any>(
 
 const TableComponent: React.FC<IBEPaginationTable> = <T extends object>(
   // eslint-disable-next-line @typescript-eslint/comma-dangle
-  props: IBEPaginationTable<T>,
+  props: IBEPaginationTable<T>
 ) => {
   const {
     apiServices,
@@ -143,10 +152,10 @@ const TableComponent: React.FC<IBEPaginationTable> = <T extends object>(
     }
     const tempRowKey = props.rowKey ? props.rowKey(record) : '';
 
-    const isInArr = selectedRowKeys.some(key => key === tempRowKey);
+    const isInArr = selectedRowKeys.some((key) => key === tempRowKey);
     let tempSelectedRowKeys = [];
     if (isInArr) {
-      tempSelectedRowKeys = selectedRowKeys.filter(k => k !== tempRowKey);
+      tempSelectedRowKeys = selectedRowKeys.filter((k) => k !== tempRowKey);
     } else {
       tempSelectedRowKeys = [...selectedRowKeys, tempRowKey];
     }
@@ -157,7 +166,7 @@ const TableComponent: React.FC<IBEPaginationTable> = <T extends object>(
   };
 
   const fetchData = useCallback(
-    pState => {
+    (pState: any) => {
       if (apiServices) {
         getDataWithCurrentState(pState, setState, repository).then((rs: any) => {
           if (rs != null && getDataAfter != null) {
@@ -167,7 +176,7 @@ const TableComponent: React.FC<IBEPaginationTable> = <T extends object>(
       }
     },
     // eslint-disable-next-line @typescript-eslint/comma-dangle
-    [apiServices, repository, getDataAfter],
+    [apiServices, repository, getDataAfter]
   );
 
   useEffect(() => {
@@ -188,7 +197,11 @@ const TableComponent: React.FC<IBEPaginationTable> = <T extends object>(
     fetchData({ pagination, option });
   };
 
-  const handleChangePage = (newPagination: PaginationEntity, _filter?: any, _sorter?: any) => {
+  const handleChangePage = (
+    newPagination: PaginationEntity,
+    _filter?: any,
+    _sorter?: any
+  ) => {
     const option = state.option;
     if (option) {
       option.sorter = _sorter;
@@ -202,7 +215,7 @@ const TableComponent: React.FC<IBEPaginationTable> = <T extends object>(
       pagination: { ...state.pagination, ...newPagination, current: newCurrent },
       option,
     });
-    setState(prev => ({ ...prev, selection: [] }));
+    setState((prev) => ({ ...prev, selection: [] }));
   };
 
   const getData = () => {
@@ -221,18 +234,19 @@ const TableComponent: React.FC<IBEPaginationTable> = <T extends object>(
     register.getData = getData;
     register.fetchData = (...args) => {
       const param = lodash.get(args, '[0]', {});
-      param.pagination = { ...state.pagination, current: 1, ...param.pagination };
+      // param.pagination = { ...state.pagination, current: 1, ...param.pagination };
       setSelectedRowKeys([]);
       fetchData(param);
     };
-    register.setOption = value =>
-      setState(prev => ({ ...prev, option: { ...prev.option, ...value } }));
-    register.setPagination = value =>
-      setState(prev => ({
+    register.setOption = (value) =>
+      setState((prev) => ({ ...prev, option: { ...prev.option, ...value } }));
+    register.setPagination = (value) =>
+      setState((prev) => ({
         ...prev,
         pagination: { ...prev.pagination, ...value },
       }));
-    register.setSelection = value => setState(prev => ({ ...prev, selection: value }));
+    register.setSelection = (value) =>
+      setState((prev) => ({ ...prev, selection: value }));
   }
 
   const thisColumns = React.useMemo(() => {
@@ -244,10 +258,17 @@ const TableComponent: React.FC<IBEPaginationTable> = <T extends object>(
       state.pagination.pageSize || 1,
       formatMessage,
       // eslint-disable-next-line @typescript-eslint/comma-dangle
-      listPermissionCode,
+      listPermissionCode
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [columns, hasStt, translateFirstKey, state.pagination, formatMessage, listPermissionCode]);
+  }, [
+    columns,
+    hasStt,
+    translateFirstKey,
+    state.pagination,
+    formatMessage,
+    listPermissionCode,
+  ]);
 
   const onRowFunction: any = React.useMemo(() => {
     if (handleClickOnRow) {
@@ -268,8 +289,12 @@ const TableComponent: React.FC<IBEPaginationTable> = <T extends object>(
   return (
     <div className={`card-main-table ${props?.className}`}>
       {search?.placeholder && (
-        <div className={`search-in-table ${search?.align ? align[search?.align] : 'to-right'}`}>
-          <div className="search-label-default">{searchLable}</div>
+        <div
+          className={`search-in-table ${
+            search?.align ? align[search?.align] : 'to-right'
+          }`}
+        >
+          <div className='search-label-default'>{searchLable}</div>
           <SearchComponent
             onSearch={handleSearch}
             placeholder={search?.placeholder}
@@ -281,7 +306,7 @@ const TableComponent: React.FC<IBEPaginationTable> = <T extends object>(
         rowSelection={rowSelection}
         onRow={onRowFunction}
         {...props}
-        className="main-table"
+        className='main-table'
         dataSource={repository?.value?.data || dataSource}
         loading={props?.loading || repository?.status === 'loading'}
         pagination={props.pagination !== false && state.pagination}
