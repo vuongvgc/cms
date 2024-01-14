@@ -1,43 +1,39 @@
-import authenticationPresenter from '@modules/authentication/presenter';
-import { useSingleAsync } from '@shared/hook/useAsync';
-import { useAltaIntl } from '@shared/hook/useTranslate';
-import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import NavLinkBottom from '../components/NavLinkBottom';
-import '../styles.scss';
-import TokenErrorStatus from './components/TokenErrorStatus';
-import UpdatePasswordForm from './components/UpdatePasswordForm';
+import authenticationPresenter from "@modules/authentication/presenter";
+import { useSingleAsync } from "@shared/hook/useAsync";
+import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import NavLinkBottom from "../components/NavLinkBottom";
+import "../styles.scss";
+import TokenErrorStatus from "./components/TokenErrorStatus";
+import UpdatePasswordForm from "./components/UpdatePasswordForm";
 
 const ResetPassword = () => {
-  const navigate = useNavigate();
-  const { formatMessage } = useAltaIntl();
-  const [isRecoveryToken, setIsRecoveryToken] = useState<boolean>(true);
-  const { CheckRecoveryToken } = authenticationPresenter;
-  const CheckRecoveryTokenCall = useSingleAsync(CheckRecoveryToken);
-  const { token } = useParams<{ token: any }>();
+    const navigate = useNavigate();
+    const { formatMessage } = useAltaIntl();
+    const [isRecoveryToken, setIsRecoveryToken] = useState<boolean>(true);
+    const { CheckRecoveryToken } = authenticationPresenter;
+    const CheckRecoveryTokenCall = useSingleAsync(CheckRecoveryToken);
+    const { token } = useParams<{ token: any }>();
 
-  useEffect(() => {
-    CheckRecoveryTokenCall?.execute(token)
-      .then(() => {
-        setIsRecoveryToken(true);
-      })
-      .catch(() => {
-        setIsRecoveryToken(false);
-      });
-  }, [CheckRecoveryTokenCall, token]);
+    useEffect(() => {
+        CheckRecoveryTokenCall?.execute(token)
+            .then(() => {
+                setIsRecoveryToken(true);
+            })
+            .catch(() => {
+                setIsRecoveryToken(false);
+            });
+    }, [CheckRecoveryTokenCall, token]);
 
-  return (
-    <>
-      {!isRecoveryToken ? (
-        <UpdatePasswordForm recoveryToken={token} />
-      ) : (
-        <TokenErrorStatus />
-      )}
-      <NavLinkBottom
-        navLink={formatMessage('link.return.login')}
-        onClick={() => navigate('/login')}
-      />
-    </>
-  );
+    return (
+        <>
+            {!isRecoveryToken ? <UpdatePasswordForm recoveryToken={token} /> : <TokenErrorStatus />}
+            <NavLinkBottom
+                navLink={formatMessage("link.return.login")}
+                onClick={() => navigate("/login")}
+            />
+        </>
+    );
 };
 export default ResetPassword;

@@ -1,4 +1,4 @@
-import * as roleRepository from './repository';
+import * as roleRepository from "./repository";
 
 const rolePresenter = { ...roleRepository };
 

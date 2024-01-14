@@ -17,7 +17,7 @@
         .ant-slider-handle {
             width: 1rem;
             height: 2.4rem;
-            border-radius: .6rem;
+            border-radius: 0.6rem;
             background-color: $color-primary;
             margin-top: -1rem;
             z-index: 3;
@@ -26,14 +26,12 @@
         .ant-slider-track {
             background-color: $color-primary;
             z-index: 2;
-
         }
 
         .ant-slider-step {
             background: $color-secondary-dark;
             border-radius: 4px;
             z-index: 1;
-
         }
     }
 

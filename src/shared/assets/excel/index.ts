@@ -1,1 +1,1 @@
-export const csv = require('./sample.csv');
+export const csv = require("./sample.csv");

@@ -1,5 +1,5 @@
-import { Locale } from 'antd/lib/locale';
+import { Locale } from "antd/lib/locale";
 
 export interface ILocale extends Locale {
-  [key: string]: any;
+    [key: string]: any;
 }

@@ -1,9 +1,9 @@
-import { IRouter } from '@routers/interface';
-import Register from './index';
+import { IRouter } from "@routers/interface";
+import Register from "./index";
 
 export const routerRegister: IRouter = {
-  path: '/register',
-  loader: import('./index'),
-  exact: true,
-  Component: <Register />,
+    path: "/register",
+    loader: import("./index"),
+    exact: true,
+    Component: <Register />,
 };

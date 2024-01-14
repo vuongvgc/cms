@@ -12,12 +12,10 @@
         border-color: $color-button-normal;
     }
 
-    .ant-modal-confirm-warning .ant-modal-confirm-body>.anticon,
-    .ant-modal-confirm-confirm .ant-modal-confirm-body>.anticon {
+    .ant-modal-confirm-warning .ant-modal-confirm-body > .anticon,
+    .ant-modal-confirm-confirm .ant-modal-confirm-body > .anticon {
         color: $color-button-cancel;
     }
-
-
 
     .ant-modal-content {
         border-radius: 1.6rem;
@@ -26,7 +24,7 @@
         .ant-modal-body {
             padding: 0;
 
-            .ant-modal-confirm-body>.anticon {
+            .ant-modal-confirm-body > .anticon {
                 display: block;
                 font-size: 9.4rem;
                 background: $color-modal-label;
@@ -58,7 +56,10 @@
                 }
             }
 
-            .ant-modal-confirm-body>.anticon+.ant-modal-confirm-title+.ant-modal-confirm-content {
+            .ant-modal-confirm-body
+                > .anticon
+                + .ant-modal-confirm-title
+                + .ant-modal-confirm-content {
                 font-size: $fs-2;
                 margin: 0 auto;
                 margin-top: 1.2rem;

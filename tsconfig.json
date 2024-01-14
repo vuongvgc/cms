@@ -1,83 +1,47 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
+    "compilerOptions": {
+        "target": "ES2020",
+        "useDefineForClassFields": true,
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "module": "ESNext",
+        "skipLibCheck": true,
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
+        /* Bundler mode */
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
 
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["src/*"],
-      "@config":  [
-        "src/config"
-      ],
-      "@config/*": [
-        "src/config/*"
-      ],
-      "@core/*": [
-        "src/core/*"
-      ],
-      "@locale/*": [
-        "src/locale/*"
-      ],
-      "@modules": [
-        "src/modules"
-      ],
-      "@modules/*": [
-        "src/modules/*"
-      ],
-      "@layout/*": [
-        "src/layout/*"
-      ],
-      "@routers/*": [
-        "src/routers/*"
-      ],
-      "@repository/*": [
-        "src/modules/core/repository/*"
-      ],
-      "@store/*": [
-        "src/modules/core/store/*"
-      ],
-      "@styles/*": [
-        "src/view/styles/*"
-      ],
-      "@view/*": [
-        "src/view/*"
-      ],
-      "@assets/*": [
-        "src/shared/assets/*"
-      ],
-      "@helper/*": [
-        "src/shared/helper/*"
-      ],
-      "@hoc/*": [
-        "src/shared/hoc/*"
-      ],
-      "@shared/*": [
-        "src/shared/*"
-      ],
-      "@hook/*": [
-        "src/shared/hook/*"
-      ],
-      "@components/*": [
-        "src/shared/components/*"
-      ]
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "baseUrl": "./",
+        "paths": {
+            "@/*": ["src/*"],
+            "@config": ["src/config"],
+            "@config/*": ["src/config/*"],
+            "@core/*": ["src/core/*"],
+            "@locale/*": ["src/locale/*"],
+            "@modules": ["src/modules"],
+            "@modules/*": ["src/modules/*"],
+            "@layout/*": ["src/layout/*"],
+            "@routers/*": ["src/routers/*"],
+            "@repository/*": ["src/modules/core/repository/*"],
+            "@store/*": ["src/modules/core/store/*"],
+            "@styles/*": ["src/view/styles/*"],
+            "@view/*": ["src/view/*"],
+            "@assets/*": ["src/shared/assets/*"],
+            "@helper/*": ["src/shared/helper/*"],
+            "@hoc/*": ["src/shared/hoc/*"],
+            "@shared/*": ["src/shared/*"],
+            "@hook/*": ["src/shared/hook/*"],
+            "@components/*": ["src/shared/components/*"]
+        }
     },
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "include": ["src"],
+    "references": [{ "path": "./tsconfig.node.json" }]
 }

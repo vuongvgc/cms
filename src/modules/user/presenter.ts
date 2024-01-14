@@ -1,4 +1,4 @@
-import userRepository from './repository';
+import userRepository from "./repository";
 
 const userPresenter = { ...userRepository };
 

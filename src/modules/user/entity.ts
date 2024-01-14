@@ -1,68 +1,70 @@
-import moment from 'moment';
+import moment from "moment";
 
 export class AccountPermissionEntity {
-  accountPermissionId: string = '';
+    accountPermissionId: string = "";
 
-  permissionCode = '';
+    permissionCode = "";
 
-  accountId = '';
+    accountId = "";
 
-  accountPermissionCreateAt = '';
+    accountPermissionCreateAt = "";
 
-  constructor(permission: Partial<AccountPermissionEntity>) {
-    if (!permission) {
-      return;
+    constructor(permission: Partial<AccountPermissionEntity>) {
+        if (!permission) {
+            return;
+        }
+        Object.assign(this, permission);
     }
-    Object.assign(this, permission);
-  }
 
-  static createlistPermisison(list?: Array<Partial<AccountPermissionEntity>>) {
-    if (list === undefined) {
-      return undefined;
+    static createlistPermisison(list?: Array<Partial<AccountPermissionEntity>>) {
+        if (list === undefined) {
+            return undefined;
+        }
+        return list.map((ll) => {
+            return new AccountPermissionEntity(ll);
+        });
     }
-    return list.map(ll => {
-      return new AccountPermissionEntity(ll);
-    });
-  }
 }
 class UserEntity {
-  userName = '';
+    userName = "";
 
-  userFullName = '';
+    userFullName = "";
 
-  email = '';
+    email = "";
 
-  permissions: AccountPermissionEntity[] = [];
+    permissions: AccountPermissionEntity[] = [];
 
-  id = '';
+    id = "";
 
-  createdAt = '';
+    createdAt = "";
 
-  updateAt = '';
+    updateAt = "";
 
-  roleId?: any;
+    roleId?: any;
 
-  role?: any;
+    role?: any;
 
-  avatar?: string = '';
+    avatar?: string = "";
 
-  constructor(user?: Partial<UserEntity>) {
-    if (!user) {
-      return;
+    constructor(user?: Partial<UserEntity>) {
+        if (!user) {
+            return;
+        }
+        Object.assign(this, user);
+        this.permissions = AccountPermissionEntity.createlistPermisison(user?.permissions) || [];
+        this.createdAt = user?.createdAt
+            ? moment(user?.createdAt).format("DD/MM/YYYY HH:mm:ss")
+            : "";
+
+        this.updateAt = user?.updateAt ? moment(user?.createdAt).format("DD/MM/YYYY HH:mm:ss") : "";
     }
-    Object.assign(this, user);
-    this.permissions = AccountPermissionEntity.createlistPermisison(user?.permissions) || [];
-    this.createdAt = user?.createdAt ? moment(user?.createdAt).format('DD/MM/YYYY HH:mm:ss') : '';
 
-    this.updateAt = user?.updateAt ? moment(user?.createdAt).format('DD/MM/YYYY HH:mm:ss') : '';
-  }
-
-  static createArrayUser(arrUser: Array<Partial<UserEntity>>): Array<UserEntity> {
-    if (!arrUser) {
-      return [];
+    static createArrayUser(arrUser: Array<Partial<UserEntity>>): Array<UserEntity> {
+        if (!arrUser) {
+            return [];
+        }
+        return arrUser.map((x) => new UserEntity(x));
     }
-    return arrUser.map(x => new UserEntity(x));
-  }
 }
 
 export default UserEntity;

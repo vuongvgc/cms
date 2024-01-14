@@ -1,1 +1,1 @@
-export const pdf = require('./fnq.pdf');
+export const pdf = require("./fnq.pdf");

@@ -1,10 +1,10 @@
 export interface IError {
-  errorStatus: string;
+    errorStatus: string;
 }
 export interface INavLink {
-  navLink: string;
-  onClick: () => void;
+    navLink: string;
+    onClick: () => void;
 }
 export interface IUpdatePasswordForm {
-  recoveryToken: string;
+    recoveryToken: string;
 }

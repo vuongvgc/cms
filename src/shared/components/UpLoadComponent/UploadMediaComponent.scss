@@ -10,8 +10,8 @@
         position: relative;
         cursor: pointer;
         // background-color: #1e1e2e;
-        border: 3px solid #F6F6F6;
-        .fas.fa-cloud-upload-alt{
+        border: 3px solid #f6f6f6;
+        .fas.fa-cloud-upload-alt {
             color: #fff;
         }
 
@@ -36,8 +36,8 @@
             //     font-size: 25px;
             // }
         }
-        .lazyLoad-img{
-            img{
+        .lazyLoad-img {
+            img {
                 width: unset !important;
                 border-radius: 10px;
             }
@@ -46,7 +46,7 @@
 }
 
 .ant-modal.modal-general.modal-media {
-    top: 20px !important
+    top: 20px !important;
 }
 
 .lazyload-wrapper {
