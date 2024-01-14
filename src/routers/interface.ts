@@ -4,7 +4,7 @@ export type IRouter = {
   loader?: any;
   path: string;
   permissionCode?: string | 'ALLOW';
-  component?: React.FC<any>;
+  Component?: React.ReactNode;
   isPrivate?: boolean;
   exact?: boolean;
   name?: string;

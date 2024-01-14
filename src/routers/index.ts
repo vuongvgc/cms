@@ -1,6 +1,6 @@
 import Loading from '@shared/components/Loading';
 
-import LoadableRouter from './loadableRouter';
+import LoadableRouter from './loadableRouter.tsx';
 import { privatePage, publicPage } from './mainRouter';
 
 export const privateRouter = new LoadableRouter({

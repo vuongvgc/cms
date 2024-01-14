@@ -1,4 +1,4 @@
-import { routerLogin } from '@view/Auth/Login/router';
+import { routerLogin } from '@view/Auth/Login/router.tsx';
 import { routerViewProfile } from '@view/Auth/Profile/router';
 import { routerHomepage } from '@view/Homepage/router';
 

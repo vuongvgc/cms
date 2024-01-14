@@ -9,18 +9,18 @@ type ILoadable = {
 };
 
 const flattenIRouter = (item: IRouter, loading: any): any => {
-  const { isPrivate = true, permissionCode: permisionCode = 'ALLOW' } = item;
+  const {
+    isPrivate = true,
+    permissionCode: permisionCode = 'ALLOW',
+    Component,
+  } = item;
   if (item.routes == null) {
     return [
       {
         ...item,
         isPrivate,
         permisionCode,
-        component: Loadable({
-          loader: () => item.loader,
-          loading,
-          delay: 200000,
-        }),
+        Component: () => Component,
         menu: undefined,
       },
     ];
@@ -35,15 +35,10 @@ const flattenIRouter = (item: IRouter, loading: any): any => {
         ...item,
         isPrivate,
         permisionCode,
-        component: Loadable({
-          loader: () => item.loader,
-          loading,
-          delay: 200000,
-        }),
+        Component: () => Component,
         menu: undefined,
         routes: undefined,
       },
-      // eslint-disable-next-line @typescript-eslint/comma-dangle
     ]
   );
 };

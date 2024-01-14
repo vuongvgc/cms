@@ -13,16 +13,16 @@ interface IShowRouter {
 const renderRoute = (
   MasterLayout: React.FC<any> | undefined,
   hasMaster: boolean | undefined,
-  component: any,
+  Component: any,
   path: string,
   exact: boolean
 ) => {
   if (hasMaster === false) {
     return (
-      <Route key={path} path={path} caseSensitive={exact} element={component} />
+      <Route key={path} path={path} caseSensitive={exact} element={<Component />} />
     );
   }
-  const DynamicComponent: React.FC<any> = component;
+  const DynamicComponent: React.FC<any> = Component;
   if (MasterLayout) {
     return (
       <Route
@@ -65,7 +65,7 @@ const ShowRouter = ({ routers, MasterLayout }: IShowRouter) => {
         return renderRoute(
           MasterLayout,
           router.masterLayout,
-          router.component,
+          router.Component,
           router.path,
           router.exact || true
         );
