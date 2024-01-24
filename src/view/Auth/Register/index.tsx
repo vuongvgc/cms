@@ -1,6 +1,6 @@
 import { useSingleAsync } from "@hook/useAsync";
 import authenticationPresenter from "@modules/authentication/presenter";
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 import { Button, Form, Input } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ const Register = () => {
     const { register } = authenticationPresenter;
     const registerAccount = useSingleAsync(register);
     const [errorStatus, setErrorStatus] = useState("");
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const onFinishFailed = () => {
         setErrorStatus("");
     };

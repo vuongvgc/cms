@@ -17,7 +17,7 @@ import SelectAndLabelComponent, {
 } from "@shared/components/SelectAndLabelComponent";
 import TableComponent from "@shared/components/TableComponent";
 import useTable from "@shared/components/TableComponent/hook";
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 
 import ModalComponents from "./component/MainModal/ModalHomepage";
 import { IModal } from "./interface";
@@ -587,7 +587,7 @@ const dataTable = [
 ];
 
 const Homepage = () => {
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const table = useTable();
 
     const [modal, setModal] = useState<IModal>({

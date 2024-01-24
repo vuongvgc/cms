@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import Icon from "@ant-design/icons";
 import { UilAngleRight } from "@iconscout/react-unicons";
 import { IRouter } from "@routers/interface";
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 import { IBreadcrumbs } from "../inteface";
 
 const BreadcrumbComponent: React.FC<IBreadcrumbs> = ({ breadcrumbs, className = "" }) => {
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const renderBreadcrumbArray = () => {
         if (Array.isArray(breadcrumbs) && breadcrumbs.length > 0) {
             return breadcrumbs.map((router: IRouter, index) => {

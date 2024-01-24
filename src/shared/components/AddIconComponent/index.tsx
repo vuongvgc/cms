@@ -1,4 +1,4 @@
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 import { Tooltip } from "antd";
 import * as Icon from "react-feather";
 interface IProps {
@@ -6,7 +6,7 @@ interface IProps {
     disable?: boolean;
 }
 const AddIconComponent = (props: IProps) => {
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const onClick = (e: any) => {
         if (props?.onClick) {
             props?.onClick();

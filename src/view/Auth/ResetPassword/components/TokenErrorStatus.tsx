@@ -1,9 +1,9 @@
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 import { useNavigate } from "react-router-dom";
 
 const TokenErrorStatus = () => {
     const navigate = useNavigate();
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     return (
         <div className="main-form auth-form">
             <div className="error-token__box">

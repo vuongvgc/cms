@@ -2,7 +2,7 @@ import { Button, Form, Input, Space } from "antd";
 import { useForm } from "antd/lib/form/Form";
 import Modal from "antd/lib/modal/Modal";
 
-import { useAltaIntl } from "@hook/useTranslate";
+import { useCustomIntl } from "@hook/useTranslate";
 import authenticationPresenter from "@modules/authentication/presenter";
 import { useSingleAsync } from "@shared/hook/useAsync";
 
@@ -13,7 +13,7 @@ interface IChangePassWord {
 
 const ModalChangePassWord = (props: IChangePassWord) => {
     const { isModalVisible, setIsModalVisible } = props;
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const [form] = useForm();
     const updateAccounts = useSingleAsync(authenticationPresenter.updateProfile);
 

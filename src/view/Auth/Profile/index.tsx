@@ -14,7 +14,7 @@ import authenticationPresenter from "@modules/authentication/presenter";
 import { removeProfile } from "@modules/authentication/profileStore";
 import { DeleteConfirm } from "@shared/components/ConfirmDelete";
 import MainTitleComponent from "@shared/components/MainTitleComponent";
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 
 import AvatarUser from "./components/AvatarUser";
 import ModalChangePassWord from "./components/ModalChangePassWord";
@@ -23,7 +23,7 @@ import { routerViewProfile } from "./router";
 const UserProfile = () => {
     const navigate = useNavigate();
     const [form] = Form.useForm();
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const [isVisible, setIsVisible] = useState(false);
     const [isDisableForm, setIsDisableForm] = useState(true);
     const user = useSelector((state: RootState) => state.profile.user);

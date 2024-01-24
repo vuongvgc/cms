@@ -11,7 +11,7 @@ import SelectAndLabelComponent, {
 } from "@shared/components/SelectAndLabelComponent";
 import TableComponent from "@shared/components/TableComponent";
 import useTable from "@shared/components/TableComponent/hook";
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 import { Space } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import { Key, useEffect, useState } from "react";
@@ -22,7 +22,7 @@ import { routerOrder } from "./router";
 import "./style.scss";
 
 const Order = () => {
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const table = useTable();
 
     const [modal, setModal] = useState<IModal>({

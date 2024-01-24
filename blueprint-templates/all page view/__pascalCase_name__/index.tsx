@@ -8,7 +8,7 @@ import SelectAndLabelComponent, { ISelectAndLabel } from '@shared/components/Sel
 import SearchComponent from '@shared/components/SearchComponent/SearchComponent';
 import EditIconComponent from '@shared/components/EditIconComponent';
 import InformationIconComponent from '@shared/components/InformationIcon';
-import { useAltaIntl } from '@shared/hook/useTranslate';
+import { useCustomIntl } from '@shared/hook/useTranslate';
 import useTable from '@shared/components/TableComponent/hook';
 import CircleLabel from '@shared/components/CircleLabel';
 import ModalComponents from './component/MainModal/Modal{{pascalCase name}}';
@@ -21,7 +21,7 @@ import dataTable from './data.json';
 
 
 const {{ pascalCase name }} = () => {
-  const { formatMessage } = useAltaIntl();
+  const { formatMessage } = useCustomIntl();
   const table = useTable();
 
   const [modal, setModal] = useState<IModal>({

@@ -1,6 +1,6 @@
 import { useSingleAsync } from "@hook/useAsync";
 import authenticationPresenter from "@modules/authentication/presenter";
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 import { Button, Form, Input } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ import RenderError from "../components/RenderError";
 
 const ForgotPassword = () => {
     const navigate = useNavigate();
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const { forgotPass } = authenticationPresenter;
     const forgotPasswordCall = useSingleAsync(forgotPass);
     const [errorStatus, setErrorStatus] = useState("");

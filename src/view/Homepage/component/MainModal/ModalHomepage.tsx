@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react";
 
 import { IFormContent, renderForm } from "@hoc/FormHelper";
 import ButtonForm from "@shared/components/ButtonForm";
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 
 import { IPropsModal } from "../../interface";
 
 const ModalHomepage = (props: IPropsModal) => {
     const { modal, setModal, handleRefresh } = props;
     const [form] = Form.useForm();
-    const { formatMessage, intl } = useAltaIntl();
+    const { formatMessage, intl } = useCustomIntl();
 
     const [typeModal, setTypeModal] = useState<"EDIT" | "ADD">("ADD");
     // JUST FORM

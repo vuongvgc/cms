@@ -1,6 +1,6 @@
 import authenticationPresenter from "@modules/authentication/presenter";
 import { useSingleAsync } from "@shared/hook/useAsync";
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import NavLinkBottom from "../components/NavLinkBottom";
@@ -10,7 +10,7 @@ import UpdatePasswordForm from "./components/UpdatePasswordForm";
 
 const ResetPassword = () => {
     const navigate = useNavigate();
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const [isRecoveryToken, setIsRecoveryToken] = useState<boolean>(true);
     const { CheckRecoveryToken } = authenticationPresenter;
     const CheckRecoveryTokenCall = useSingleAsync(CheckRecoveryToken);

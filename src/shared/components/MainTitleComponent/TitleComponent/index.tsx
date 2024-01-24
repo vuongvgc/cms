@@ -1,4 +1,4 @@
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 import { Typography } from "antd";
 import lodash from "lodash";
 import React, { memo } from "react";
@@ -6,7 +6,7 @@ import { FormattedMessage } from "react-intl";
 import { ITitle } from "../inteface";
 
 const TitleComponent: React.FC<ITitle> = (props) => {
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const tooltip: string | undefined = React.useMemo<string | undefined>(() => {
         if (!lodash.isEmpty(props.tooltip)) {
             return formatMessage(props.tooltip || "");

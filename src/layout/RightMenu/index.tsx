@@ -7,7 +7,7 @@ import { IconBack } from "@assets/icon";
 import { CheckPermissionFunc } from "@hoc/CheckPermission";
 import { UilFileCheck, UilFileImport, UilShareAlt, UilTrash } from "@iconscout/react-unicons";
 import { RootState } from "@modules";
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 
 const listIconType = {
     add: <Icon.Plus size="24" className="icon-feather" />,
@@ -57,7 +57,7 @@ const RenderIcon = (item: IArrayAction) => {
 };
 
 const RenderItem = React.memo(({ item }: { item: IArrayAction }) => {
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const title = formatMessage(item?.name || `common.${item.iconType}`);
     const onClick = (e: any) => {
         if (!item.disable && item.handleAction) {

@@ -1,5 +1,5 @@
 import { useSingleAsync } from "@hook/useAsync";
-import { useAltaIntl } from "@hook/useTranslate";
+import { useCustomIntl } from "@hook/useTranslate";
 import authenticationPresenter from "@modules/authentication/presenter";
 import RenderError from "@view/Auth/components/RenderError";
 import { IUpdatePasswordForm } from "@view/Auth/interface";
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const UpdatePasswordForm: React.FC<IUpdatePasswordForm> = (props) => {
     const navigate = useNavigate();
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const { resetPass } = authenticationPresenter;
     const resetPasswordCall = useSingleAsync(resetPass);
 

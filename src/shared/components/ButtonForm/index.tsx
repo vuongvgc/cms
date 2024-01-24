@@ -1,4 +1,4 @@
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 import { Button } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ const ButtonForm: React.FC<IButtonForm> = ({
     onOkForm,
     isDisabled = false,
 }) => {
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const navigate = useNavigate();
     const callOnCancelForm = React.useMemo(() => {
         if (onCancelForm) {

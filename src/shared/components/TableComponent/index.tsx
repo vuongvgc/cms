@@ -8,7 +8,7 @@ import { OptionEntity } from "@core/table";
 import { CheckPermissionFunc } from "@hoc/CheckPermission";
 import { useSingleAsync } from "@hook/useAsync";
 import { PermissionsSelector } from "@modules/authentication/profileStore";
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 
 import SearchComponent from "../SearchComponent/SearchComponent";
 import Pagination from "./Component/Pagination";
@@ -111,7 +111,7 @@ const TableComponent: React.FC<IBEPaginationTable> = <T extends object>(
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const repository = useSingleAsync(apiServices);
-    const { formatMessage, intl } = useAltaIntl();
+    const { formatMessage, intl } = useCustomIntl();
     const [state, setState] = useState<IState>({
         pagination: { ...InitPagination, ...props.pagination },
         option: { ...defaultOption, ...InitOption },

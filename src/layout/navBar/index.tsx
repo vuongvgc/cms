@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import { IRouter } from "@routers/interface";
 import TitleComponent from "@shared/components/MainTitleComponent/TitleComponent";
-import { useAltaIntl } from "@shared/hook/useTranslate";
+import { useCustomIntl } from "@shared/hook/useTranslate";
 
 interface PropsNavBar {
     classTitle?: string;
@@ -16,7 +16,7 @@ interface PropsNavBar {
 
 function Navbar({ classTitle = "", routerSentTo }: PropsNavBar) {
     const location = useLocation();
-    const { formatMessage } = useAltaIntl();
+    const { formatMessage } = useCustomIntl();
     const nameActive = React.useMemo(() => {
         const routerActive = routerSentTo?.filter((r) => r.path === location.pathname);
         if (routerActive && routerActive?.length > 0) {
