@@ -80,7 +80,7 @@ const SelectAndLabelComponent: React.FC<ISelectAndLabel> = (props: ISelectAndLab
             <div className="label-select">
                 {renderUILabel}
                 <Select
-                    className={"select-custom " + (props.classNameSelect || "")}
+                    className={props.classNameSelect || ""}
                     value={value == null ? all : value}
                     defaultValue={props?.defaultValue ? props?.defaultValue : all}
                     onChange={onChange}

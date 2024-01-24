@@ -84,7 +84,7 @@ const UserProfile = () => {
     return (
         <div>
             <div className="all-page-component">
-                <div className="w-100 d-flex flex-row-reverse">
+                <div className="w-full flex flex-row-reverse">
                     <HeaderComponent />
                 </div>
             </div>

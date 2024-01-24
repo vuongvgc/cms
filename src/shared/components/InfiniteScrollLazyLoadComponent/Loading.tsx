@@ -1,6 +1,6 @@
 import React from "react";
 
 const Loading = () => {
-    return <div className="d-flex justify-content-center w-100">loading</div>;
+    return <div className="flex justify-center w-full ">loading</div>;
 };
 export default React.memo(Loading);

@@ -1,3 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .hidden-important {
+      display: none !important;
+    }
+  }
+  
 //----------------------------------------------
 //THIS FILE USE TO IMPORT SCSS, DO NOT CODE HERE
 //----------------------------------------------

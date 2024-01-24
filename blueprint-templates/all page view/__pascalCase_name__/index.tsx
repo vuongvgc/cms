@@ -124,51 +124,42 @@ const {{ pascalCase name }} = () => {
   };
   return (
     <div className='{{kebabCase name}}'>
-      <MainTitleComponent breadcrumbs={router{{pascalCase name}} } />
-      <div className='main-card'>
-        <div className='d-flex flex-row justify-content-md-between mb-3 align-items-end'>
-          <div className='d-flex flex-row '>
-            {arraySelectFilter.map((item) => (
-              <SelectAndLabelComponent
-                onChange={onChangeSelectStatus(item.name)}
-                key={item.name}
-                className='margin-select'
-                dataString={item.dataString}
-                textLabel={item.textLabel}
-              />
-            ))}
-          </div>
-          <div className='d-flex flex-column '>
-            <div className='label-select'>
-              {formatMessage('common.keyword')}
+        <MainTitleComponent breadcrumbs={router{{pascalCase name}} } />
+        <div className="bg-white p-4 rounded-lg">
+            <div className="flex justify-between items-end  gap-4 mb-3 ">
+                <div className="flex justify-between gap-4 items-end ">
+                    {arraySelectFilter.map((item) => (
+                        <SelectAndLabelComponent
+                            onChange={onChangeSelectStatus(item.name)}
+                            key={item.name}
+                            dataString={item.dataString}
+                            textLabel={item.textLabel}
+                        />
+                    ))}
+                </div>
+                <div className="flex flex-col">
+                    <div className="font-normal text-2xl">
+                        {formatMessage("common.keyword")}
+                    </div>
+                    <SearchComponent onSearch={handleSearch} placeholder={"common.keyword"} />
+                </div>
             </div>
-            <SearchComponent
-              onSearch={handleSearch}
-              placeholder={'common.keyword'}
-              classNames='mb-0 search-table'
+            <TableComponent
+                // apiServices={}
+                defaultOption={filter}
+                translateFirstKey='{{camelCase name}}'
+                rowKey={(res) => res[idChooses]}
+                register={table}
+                columns={columns}
+                onRowSelect={setSelectedRowKeys}
+                dataSource={dataTable}
+                disableFirstCallApi={true}
             />
-          </div>
         </div>
-        <TableComponent
-          // apiServices={}
-          defaultOption={filter }
-          translateFirstKey='{{camelCase name}}'
-          rowKey={(res) => res[idChooses]}
-          register={table}
-          columns={columns}
-          onRowSelect={setSelectedRowKeys}
-          dataSource={dataTable}
-          disableFirstCallApi={true}
-        />
-      </div>
-      <RightMenu arrayAction={arrayAction} />
-      <ModalComponents
-        modal={modal}
-        handleRefresh={handleRefresh}
-        setModal={setModal}
-      />
+        <RightMenu arrayAction={arrayAction} />
+        <ModalComponents modal={modal} handleRefresh={handleRefresh} setModal={setModal} />
     </div>
-  );
+);
 };
 
 export default {{ pascalCase name }};

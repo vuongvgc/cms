@@ -50,6 +50,7 @@ const login = (payload: ILoginDTO) => {
         path: "/api/Users/Login",
         method: "post",
         payload,
+        showSuccess: true,
         config: { isPrivate: false },
     });
 };
@@ -76,7 +77,7 @@ const resetPass = (payload: any, otp: string) => {
 const getProfile = () => {
     return httpRepository.execute({
         path: "/api/Users/Profile",
-        showSuccess: false,
+        showSuccess: true,
         convert: (res) => {
             return new User(res);
         },

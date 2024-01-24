@@ -5,7 +5,7 @@ import * as React from "react";
 
 const Loading = () => {
     return (
-        <div className="vertical-centered-box d-flex align-items-center justify-content-center">
+        <div className="vertical-centered-box flex items-center justify-center">
             <div className="content-wrapper-loading">
                 <div className="loader-circle" />
                 <div className="loader-line-mask">

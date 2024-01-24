@@ -129,26 +129,23 @@ const Order = () => {
     return (
         <div className="order">
             <MainTitleComponent breadcrumbs={routerOrder} />
-            <div className="main-card">
-                <div className="d-flex flex-row justify-content-md-between mb-3 align-items-end">
-                    <div className="d-flex flex-row ">
+            <div className="bg-white p-4 rounded-lg">
+                <div className="flex justify-between items-end  gap-4 mb-3 ">
+                    <div className="flex justify-between gap-4 items-end ">
                         {arraySelectFilter.map((item) => (
                             <SelectAndLabelComponent
                                 onChange={onChangeSelectStatus(item.name)}
                                 key={item.name}
-                                className="margin-select"
                                 dataString={item.dataString}
                                 textLabel={item.textLabel}
                             />
                         ))}
                     </div>
-                    <div className="d-flex flex-column ">
-                        <div className="label-select">{formatMessage("common.keyword")}</div>
-                        <SearchComponent
-                            onSearch={handleSearch}
-                            placeholder={"common.keyword"}
-                            classNames="mb-0 search-table"
-                        />
+                    <div className="flex flex-col">
+                        <div className="font-normal text-2xl">
+                            {formatMessage("common.keyword")}
+                        </div>
+                        <SearchComponent onSearch={handleSearch} placeholder={"common.keyword"} />
                     </div>
                 </div>
                 <TableComponent

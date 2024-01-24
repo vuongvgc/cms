@@ -41,7 +41,7 @@ const AvatarUser: React.FC<IAvatar> = (props) => {
                         <CameraOutlined hidden={disabled} />
                     </label>
                     <input
-                        hidden
+                        className="hidden-important"
                         onChange={(e) => {
                             const media: any = e.target.files ? e.target.files[0] : null;
                             setImgUrl(media);

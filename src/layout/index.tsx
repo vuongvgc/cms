@@ -30,7 +30,7 @@ const DefaultLayout: React.FC<PropsWithChildren<IDefaultLayoutProps>> = (props) 
         <div className="all-page-component">
             <SiderComponent setClassName={setMenu} className={menu} />
             <div className="right-page-component" onClick={onClick}>
-                <div className="w-100 d-flex flex-row-reverse">
+                <div className="w-full flex flex-row-reverse">
                     <HeaderComponent />
                 </div>
                 <div className="main-component">{props.children}</div>

@@ -88,10 +88,9 @@ interface IToken {
 }
 
 export const TokenSelector: Selector<RootState, IToken> = (state) => {
-    console.log(state);
     return {
-        token: "Vuong Do",
-        status: true,
+        token: state.profile.token || "",
+        status: state.profile.statusLogin || false,
     };
 };
 

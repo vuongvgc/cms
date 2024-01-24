@@ -17,7 +17,7 @@ const TitleComponent: React.FC<ITitle> = (props) => {
         return undefined;
     }, [props.title, formatMessage]);
     return (
-        <Typography.Title className={props.className} level={props.level} title={tooltip}>
+        <Typography.Title level={props.level} title={tooltip}>
             <FormattedMessage id={String(props.title)} />
         </Typography.Title>
     );

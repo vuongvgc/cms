@@ -11,7 +11,6 @@ import locale from "@locale/index";
 import { TokenSelector } from "@modules/authentication/profileStore";
 import { LanguageSelector } from "@modules/setting/settingStore";
 import PrivatePage from "@routers/component/PrivatePage";
-import "@shared/assets/css/bootstrap.min.css";
 import PublicPage from "./routers/component/PublicPage";
 
 const MainView = memo(({ statusLogin }: { statusLogin: boolean }) => {
@@ -39,7 +38,9 @@ const App: React.FC = () => {
         return locale[language];
     }, [language]);
     useEffect(() => {
-        if (!token) {
+        if (token) {
+            navigate("/");
+        } else {
             navigate("/login");
         }
     }, [token]);

@@ -60,9 +60,6 @@ const SearchComponent = (props: IProps) => {
                 })}
                 suffix={<Icon.Search />}
             />
-            {/* <a className="icon-search" onClick={() => props.onClick(valueInput)}>
-        <Icon.Search />
-      </a> */}
         </div>
     );
 };
