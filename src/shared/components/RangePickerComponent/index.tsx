@@ -25,7 +25,7 @@ const RangePickerComponent = (props: IRangerPicker) => {
 
     return (
         <DatePicker.RangePicker
-            className={props.className || "alta-calendar"}
+            className={props.className || "cms-calendar"}
             defaultValue={props?.defaultValue}
             id={props.textLabel}
             onChange={onChange}

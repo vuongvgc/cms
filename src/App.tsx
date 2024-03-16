@@ -31,7 +31,10 @@ const MainView = memo(({ statusLogin }: { statusLogin: boolean }) => {
 
 // For Test
 const App: React.FC = () => {
-    const { token } = useSelector(TokenSelector);
+    // TODO: remove when authenticated
+    const token = 'mock-token';
+    // const { token } = useSelector(TokenSelector);
+
     const { language } = useSelector(LanguageSelector);
     const navigate = useNavigate();
     const memoLangData = useMemo(() => {
