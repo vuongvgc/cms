@@ -2,11 +2,14 @@ import forgotPassword from "./forgotPassword";
 import resetPassword from "./resetPassword";
 import login from "./login";
 import register from "./register";
+import accounts from "./accounts"
+
 export default {
     ...login,
     ...register,
     ...forgotPassword,
     ...resetPassword,
+    ...accounts,
     "auth.opt.notification": "Mã OTP sẽ hết hiệu lực sau <code>{time} giây</code> nữa",
     "auth.resend.otp": "Gửi lại OTP",
     "auth.form.required": "Vui lòng nhập",

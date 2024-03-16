@@ -18,13 +18,13 @@ const ModalHomepage = (props: IPropsModal) => {
         return [
             {
                 name: "deviceName",
-                label: "device.deviceName",
+                label: "homepage.deviceName",
                 rules: [{ required: true }, { max: 255 }],
                 readOnly: modal.isReadOnly,
             },
 
             {
-                label: "device.deviceCode",
+                label: "homepage.deviceCode",
                 rules: [{ required: true }, { pattern: /^\d+$/g }, { max: 255 }],
                 name: "deviceCode",
                 readOnly: modal.isReadOnly,
@@ -32,7 +32,7 @@ const ModalHomepage = (props: IPropsModal) => {
 
             {
                 name: "deviceSimNumber",
-                label: "device.deviceSimNumber",
+                label: "homepage.deviceSimNumber",
                 rules: [{ pattern: /^\d+$/g }],
                 readOnly: modal.isReadOnly,
             },
@@ -79,7 +79,7 @@ const ModalHomepage = (props: IPropsModal) => {
                         : formatMessage(`${translateFirstKey}.update`)
                     : formatMessage(`${translateFirstKey}.create`)
             }
-            visible={modal.isVisible}
+            open={modal.isVisible}
             onOk={handleOk}
             onCancel={handleCancel}
             footer={

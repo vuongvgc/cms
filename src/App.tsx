@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import locale from "@locale/index";
-import { TokenSelector } from "@modules/authentication/profileStore";
 import { LanguageSelector } from "@modules/setting/settingStore";
 import PrivatePage from "@routers/component/PrivatePage";
 import PublicPage from "./routers/component/PublicPage";

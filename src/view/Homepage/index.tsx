@@ -697,10 +697,10 @@ const Homepage = () => {
             <div className="main-card">
                 <div className="flex justify-between items-end mb-3 ">
                     <div className="flex">
-                        {arraySelectFilter.map((item) => (
+                        {arraySelectFilter.map((item, index) => (
                             <SelectAndLabelComponent
                                 onChange={onChangeSelectStatus(item.name)}
-                                key={item.name}
+                                key={index}
                                 dataString={item.dataString}
                                 textLabel={item.textLabel}
                             />

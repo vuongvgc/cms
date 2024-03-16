@@ -7,6 +7,7 @@ import pageError from "./pageError";
 import roles from "./roles";
 import server from "./server";
 import order from "./order";
+import homepage from "./hompage";
 
 export default {
     ...viVN,
@@ -16,6 +17,6 @@ export default {
     ...pageError,
     ...roles,
     ...order,
-
+    ...homepage,
     Form,
 };

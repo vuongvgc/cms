@@ -46,7 +46,7 @@ const ModalChangePassWord = (props: IChangePassWord) => {
             footer={false}
             title={formatMessage("accounts.change.password.title")}
             className="main-modal"
-            visible={isModalVisible}
+            open={isModalVisible}
             destroyOnClose={true}
             onOk={handleOk}
             onCancel={handleCancel}

@@ -1,114 +1,114 @@
-import React, { useEffect, useState } from "react";
-import { Checkbox, Form, Modal } from "antd";
-import { IFormContent, renderForm } from "@hoc/FormHelper";
-import ButtonForm from "@shared/components/ButtonForm";
-import { useCustomIntl } from "@shared/hook/useTranslate";
-import { IPropsModal } from "../../interface";
+import React, { useEffect, useState } from 'react';
+import { Checkbox, Form, Modal } from 'antd';
+import { IFormContent, renderForm } from '@hoc/FormHelper';
+import ButtonForm from '@shared/components/ButtonForm';
+import { useCustomIntl } from '@shared/hook/useTranslate';
+import { IPropsModal } from '../../interface';
 
-const ModalOrder = (props: IPropsModal) => {
-    const { modal, setModal, handleRefresh } = props;
-    const [form] = Form.useForm();
-    useCustomIntl;
-    const { formatMessage, intl } = useCustomIntl();
 
-    const [typeModal, setTypeModal] = useState<"EDIT" | "ADD">("ADD");
-    // JUST FORM
-    const formContent: IFormContent[] = React.useMemo<IFormContent[]>(() => {
-        return [
-            {
-                name: "deviceName",
-                label: "device.deviceName",
-                rules: [{ required: true }, { max: 255 }],
-                readOnly: modal.isReadOnly,
-            },
+const ModalOrder  = (props: IPropsModal) => {
+  const { modal, setModal, handleRefresh } = props;
+  const [form] = Form.useForm();
+  const { formatMessage, intl } = useCustomIntl();
 
-            {
-                label: "device.deviceCode",
-                rules: [{ required: true }, { pattern: /^\d+$/g }, { max: 255 }],
-                name: "deviceCode",
-                readOnly: modal.isReadOnly,
-            },
+  const [typeModal, setTypeModal] = useState<"EDIT" | "ADD">("ADD");
+  // JUST FORM
+  const formContent: IFormContent[] = React.useMemo<IFormContent[]>(() => {
+      return [
+          {
+              name: "deviceName",
+              label: "order.deviceName",
+              rules: [{ required: true }, { max: 255 }],
+              readOnly: modal.isReadOnly,
+          },
 
-            {
-                name: "deviceSimNumber",
-                label: "device.deviceSimNumber",
-                rules: [{ pattern: /^\d+$/g }],
-                readOnly: modal.isReadOnly,
-            },
-        ];
-    }, [modal.isReadOnly]);
+          {
+              label: "order.deviceCode",
+              rules: [{ required: true }, { pattern: /^\d+$/g }, { max: 255 }],
+              name: "deviceCode",
+              readOnly: modal.isReadOnly,
+          },
 
-    useEffect(() => {
-        if (modal.dataEdit !== null) {
-            // Call API Get Detail here
-            setTypeModal("EDIT");
-        } else {
-            setTypeModal("ADD");
-        }
-    }, [modal]);
-    const handleOk = () => {
-        form.submit();
-    };
-    const handleCancel = () => {
-        setModal({ isVisible: false, dataEdit: null });
-        form.resetFields();
-        handleRefresh();
-    };
-    const onFinish = () => {
-        //thêm xóa sửa value here
-        // console.debug('value', value);
-        if (typeModal === "EDIT") {
-            //call api
-            handleCancel();
-        } else {
-            //call api
-            handleCancel();
-        }
-    };
+          {
+              name: "deviceSimNumber",
+              label: "order.deviceSimNumber",
+              rules: [{ pattern: /^\d+$/g }],
+              readOnly: modal.isReadOnly,
+          },
+      ];
+  }, [modal.isReadOnly]);
 
-    const translateFirstKey = "order"; //put your translate here
+  useEffect(() => {
+      if (modal.dataEdit !== null) {
+          // Call API Get Detail here
+          setTypeModal("EDIT");
+      } else {
+          setTypeModal("ADD");
+      }
+  }, [modal]);
+  const handleOk = () => {
+      form.submit();
+  };
+  const handleCancel = () => {
+      setModal({ isVisible: false, dataEdit: null });
+      form.resetFields();
+      handleRefresh();
+  };
+  const onFinish = () => {
+      //thêm xóa sửa value here
+      // console.debug('value', value);
+      if (typeModal === "EDIT") {
+          //call api
+          handleCancel();
+      } else {
+          //call api
+          handleCancel();
+      }
+  };
 
-    return (
-        <Modal
-            title={
-                typeModal === "EDIT"
-                    ? modal.isReadOnly
-                        ? formatMessage(`${translateFirstKey}.information`)
-                        : formatMessage(`${translateFirstKey}.update`)
-                    : formatMessage(`${translateFirstKey}.create`)
-            }
-            visible={modal.isVisible}
-            onOk={handleOk}
-            onCancel={handleCancel}
-            footer={
-                <ButtonForm
-                    isDisabled={modal.isReadOnly ? true : false}
-                    formName="form-device"
-                    nameButtonSubmit={typeModal === "EDIT" ? "common.update" : "common.add"}
-                    onCancelForm={() => handleCancel()}
-                />
-            }
-            closable={false}
-        >
-            <Form
-                form={form}
-                className="main-form" //important
-                layout="vertical" //important
-                name="basic"
-                onFinish={onFinish}
-            >
-                {renderForm(formContent, intl)}
-                {modal?.dataEdit && (
-                    <Form.Item
-                        label={formatMessage(`${translateFirstKey}.accountStatus`)}
-                        name={"accountStatus"}
-                    >
-                        <Checkbox>{formatMessage("common.statusActive")}</Checkbox>
-                    </Form.Item>
-                )}
-            </Form>
-        </Modal>
-    );
-};
+  const translateFirstKey = 'order'; //put your translate here
+
+  return (
+      <Modal
+          title={
+              typeModal === "EDIT"
+                  ? modal.isReadOnly
+                      ? formatMessage(`${translateFirstKey}.information`)
+                      : formatMessage(`${translateFirstKey}.update`)
+                  : formatMessage(`${translateFirstKey}.create`)
+          }
+          open={modal.isVisible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={
+              <ButtonForm
+                  isDisabled={modal.isReadOnly ? true : false}
+                  formName="form-device"
+                  nameButtonSubmit={typeModal === "EDIT" ? "common.update" : "common.add"}
+                  onCancelForm={() => handleCancel()}
+              />
+          }
+          closable={false}
+      >
+          <Form
+              form={form}
+              className="main-form" //important
+              layout="vertical" //important
+              name="basic"
+              onFinish={onFinish}
+          >
+              {renderForm(formContent, intl)}
+              {modal?.dataEdit && (
+                  <Form.Item
+                      label={formatMessage(`${translateFirstKey}.accountStatus`)}
+                      name={"accountStatus"}
+                  >
+                      <Checkbox>{formatMessage("common.statusActive")}</Checkbox>
+                  </Form.Item>
+              )}
+          </Form>
+      </Modal>
+  );
+};;
 
 export default ModalOrder;

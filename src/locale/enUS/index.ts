@@ -7,6 +7,7 @@ import common from "./common";
 import pageError from "./pageError";
 import server from "./server";
 import order from "./order";
+import homepage from "./homepage";
 
 export default {
     ...enUS,
@@ -16,4 +17,5 @@ export default {
     ...pageError,
     ...roles,
     ...order,
+    ...homepage,
 };

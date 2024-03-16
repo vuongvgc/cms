@@ -2,12 +2,14 @@ import forgotPassword from "./forgotPassword";
 import login from "./login";
 import register from "./register";
 import resetPassword from "./resetPassword";
+import accounts from "./accounts"
 
 export default {
     ...login,
     ...register,
     ...forgotPassword,
     ...resetPassword,
+    ...accounts,
     "auth.opt.notification": "OTP code will expire after <code>{time} second</code> again",
     "auth.resend.otp": "Send OTP",
     "auth.form.required": "Please enter",
